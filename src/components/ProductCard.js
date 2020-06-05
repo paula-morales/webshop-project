@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../store/cart/actions";
 
 const compare_price = (product_a, product_b) => {
   return product_a.price - product_b.price;
@@ -9,11 +11,15 @@ const compare_popularity = (product_a, product_b) => {
 };
 export default function ProductCard(props) {
   const { sortBy, products } = props;
-
+  const dispatch = useDispatch();
   if (sortBy === "price") {
     products.sort(compare_price);
   } else {
     products.sort(compare_popularity);
+  }
+
+  function handlerClick(e) {
+    dispatch(addProductToCart(e.target.value));
   }
 
   return (
@@ -39,7 +45,9 @@ export default function ProductCard(props) {
               })}
               <span>
                 €{product.price} add to Cart:
-                <button>+</button>
+                <button value={product.id} onClick={handlerClick}>
+                  +
+                </button>
               </span>
             </p>
           </div>
