@@ -5,6 +5,9 @@ export const cartReducer = (state = initialState, { type, payload }) => {
     case "ADD_PRODUCT": {
       return [...state, payload];
     }
+    case "EMPTY_CART": {
+      return [];
+    }
     default: {
       return state;
     }

@@ -16,7 +16,9 @@ function App() {
         <NavLink className="NavLink" to="/">
           Awesome webshop
         </NavLink>
-        {cart.length} products in cart
+        <NavLink className="NavLink" to="/cartpage">
+          {cart.length} products in cart
+        </NavLink>
       </nav>
       <Switch>
         <Route path="/cartpage" component={CartPage} />
