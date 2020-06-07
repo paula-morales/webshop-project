@@ -17,13 +17,14 @@ export default function ProductCard(props) {
   const dispatch = useDispatch();
   const cart = useSelector(cartSelector);
   const cartQuantity = count(cart);
+
   if (sortBy === "price") {
     products.sort(compare_price);
   } else {
     products.sort(compare_popularity);
   }
 
-  function handlerClick(e) {
+  function handlerClickAddProduct(e) {
     dispatch(addProductToCart(e.target.value));
   }
 
@@ -75,12 +76,12 @@ export default function ProductCard(props) {
                     -
                   </button>{" "}
                   {findQuantity(product.id)} in cart
-                  <button value={product.id} onClick={handlerClick}>
+                  <button value={product.id} onClick={handlerClickAddProduct}>
                     +{" "}
                   </button>
                 </p>
               ) : (
-                <button value={product.id} onClick={handlerClick}>
+                <button value={product.id} onClick={handlerClickAddProduct}>
                   +{" "}
                 </button>
               )}
