@@ -3,7 +3,8 @@ const initialState = [
     id: 1,
     name: "Elegant shirt",
     tags: ["elegant", "men"],
-    img: "https://publicdomainvectors.org/photos/1297208404.png",
+    img:
+      "https://p0.pikist.com/photos/692/879/man-person-shirt-bow-tie-suspender-appareal-braces-elegance-fashion.jpg",
     price: 30,
     popular: 2,
     description:

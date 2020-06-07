@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addProductToCart } from "../store/cart/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductToCart, removeProductFromCart } from "../store/cart/actions";
+import { cartSelector } from "../store/cart/selectors";
+import { count } from "../_config";
 
 const compare_price = (product_a, product_b) => {
   return product_a.price - product_b.price;
@@ -9,9 +11,12 @@ const compare_price = (product_a, product_b) => {
 const compare_popularity = (product_a, product_b) => {
   return product_b.popular - product_a.popular;
 };
+
 export default function ProductCard(props) {
   const { sortBy, products } = props;
   const dispatch = useDispatch();
+  const cart = useSelector(cartSelector);
+  const cartQuantity = count(cart);
   if (sortBy === "price") {
     products.sort(compare_price);
   } else {
@@ -22,6 +27,18 @@ export default function ProductCard(props) {
     dispatch(addProductToCart(e.target.value));
   }
 
+  function handlerClickRemoveProduct(event) {
+    dispatch(removeProductFromCart(event.target.value));
+  }
+
+  function findQuantity(productid) {
+    for (const key in cartQuantity) {
+      if (parseInt(key) === productid) {
+        return cartQuantity[key];
+      }
+    }
+  }
+
   return (
     <div className="flex-container">
       {products.map((product) => {
@@ -30,12 +47,15 @@ export default function ProductCard(props) {
             <img
               src={product.img}
               alt={product.name}
-              style={{ width: "300px" }}
+              style={{ width: "200px", height: "200px" }}
             />
             <p>
               <Link to={`/productpage/${product.id}`}>
                 <strong>{product.name}</strong>
-              </Link>
+              </Link>{" "}
+              €{product.price}
+            </p>
+            <p>
               {product.tags.map((tag) => {
                 return (
                   <label className="Tag" key={tag}>
@@ -43,12 +63,27 @@ export default function ProductCard(props) {
                   </label>
                 );
               })}
-              <span>
-                €{product.price} add to Cart:
+            </p>
+            <p>
+              add to Cart:
+              {cart.includes(product.id.toString()) ? (
+                <p>
+                  <button
+                    value={product.id}
+                    onClick={handlerClickRemoveProduct}
+                  >
+                    -
+                  </button>{" "}
+                  {findQuantity(product.id)} in cart
+                  <button value={product.id} onClick={handlerClick}>
+                    +{" "}
+                  </button>
+                </p>
+              ) : (
                 <button value={product.id} onClick={handlerClick}>
-                  +
+                  +{" "}
                 </button>
-              </span>
+              )}
             </p>
           </div>
         );

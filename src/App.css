@@ -1,6 +1,7 @@
 .NavLink {
   text-decoration: none;
   padding-right: 50px;
+  color: #fff;
 }
 .navbar {
   height: 40px;
@@ -29,7 +30,7 @@ html {
 .flex-item {
   -webkit-flex: 1 auto;
   flex: 1 auto;
-  width: 50%;
+  width: 20%;
   height: 500px;
 }
 

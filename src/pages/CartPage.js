@@ -2,13 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { cartSelector, totalSelector } from "../store/cart/selectors";
 import { selectProducts } from "../store/products/selectors";
-
-function count(arr) {
-  return arr.reduce(
-    (prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev),
-    {}
-  );
-}
+import { addProductToCart, removeProductFromCart } from "../store/cart/actions";
+import { count } from "../_config";
 
 export default function CartPage() {
   const cart = useSelector(cartSelector);
@@ -29,12 +24,19 @@ export default function CartPage() {
       }
     }
   }
-  function handlerClick() {
+  function handlerClickEmptyCart() {
     dispatch({
       type: "EMPTY_CART",
     });
   }
 
+  function handlerClickAddProduct(event) {
+    dispatch(addProductToCart(event.target.value));
+  }
+
+  function handlerClickRemoveProduct(event) {
+    dispatch(removeProductFromCart(event.target.value));
+  }
   return (
     <div>
       Your shopping cart:
@@ -42,13 +44,20 @@ export default function CartPage() {
         {productsInCart.map((product) => {
           return (
             <p key={product.id}>
-              {product.name} {findQuantity(product.id)}x€{product.price} ={" "}
+              {product.name}
+              <button value={product.id} onClick={handlerClickAddProduct}>
+                +
+              </button>
+              <button value={product.id} onClick={handlerClickRemoveProduct}>
+                -
+              </button>
+              {findQuantity(product.id)}x€{product.price} ={" "}
               {findQuantity(product.id) * product.price}
             </p>
           );
         })}
         <p>Total:€{total}</p>
-        <button onClick={handlerClick}>Empty cart</button>
+        <button onClick={handlerClickEmptyCart}>Empty cart</button>
       </div>
     </div>
   );
