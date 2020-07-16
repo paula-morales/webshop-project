@@ -16,6 +16,7 @@ export default function CartPage() {
       return parseInt(id) === product.id;
     });
   });
+  console.log("cart", cart);
 
   function findQuantity(productid) {
     for (const key in cartQuantity) {
