@@ -8,7 +8,7 @@ export const totalSelector = (state) => {
 
   let total = 0;
   cart.map((cartProductId) =>
-    products.map((product) => {
+    products.forEach((product) => {
       if (parseInt(cartProductId) === product.id) {
         return (total += product.price);
       }
