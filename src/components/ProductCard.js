@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, removeProductFromCart } from "../store/cart/actions";
 import { cartSelector } from "../store/cart/selectors";
@@ -51,10 +50,7 @@ export default function ProductCard(props) {
               style={{ width: "200px", height: "200px" }}
             />
             <p>
-              <Link to={`/productpage/${product.id}`}>
-                <strong>{product.name}</strong>
-              </Link>{" "}
-              €{product.price}
+              <strong>{product.name}</strong>€{product.price}
             </p>
             <p>
               {product.tags.map((tag) => {

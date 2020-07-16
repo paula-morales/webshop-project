@@ -7,12 +7,12 @@ export const totalSelector = (state) => {
   const products = state.products;
 
   let total = 0;
-  cart.map((cartProductId) => {
-    return products.map((product) => {
+  cart.map((cartProductId) =>
+    products.map((product) => {
       if (parseInt(cartProductId) === product.id) {
-        total += product.price;
+        return (total += product.price);
       }
-    });
-  });
+    })
+  );
   return total;
 };

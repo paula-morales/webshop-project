@@ -3,7 +3,6 @@ import ProductCard from "../components/ProductCard";
 import { selectTags } from "../store/products/selectors";
 import { useSelector } from "react-redux";
 import { selectProducts } from "../store/products/selectors";
-import Axios from "axios";
 
 export default function Homepage() {
   const [sortBy, setSortBy] = useState("price");
@@ -27,14 +26,6 @@ export default function Homepage() {
       return product.tags.some((tag) => filterTags.includes(tag));
     });
   }
-
-  // async function getProducts() {
-  //   const url =
-  //     "https://my-json-server.typicode.com/paula-morales/API-webshop-project";
-  //   const response = await Axios.get(url);
-  //   console.log(response.data);
-  // }
-  // getProducts();
 
   return (
     <div>
