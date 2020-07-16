@@ -1,1 +1,1 @@
-## Check the deployed version [here](awesome-webshop.netlify.app)
+## Check the deployed version [here](https://awesome-webshop.netlify.app/)
