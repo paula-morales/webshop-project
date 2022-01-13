@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Switch, Route, NavLink } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import CartPage from "./pages/CartPage";
 import { useSelector } from "react-redux";
@@ -19,10 +19,10 @@ function App() {
           {cart.length} products in cart
         </NavLink>
       </nav>
-      <Switch>
-        <Route path="/cartpage" component={CartPage} />
-        <Route exact path="/" component={Homepage} />
-      </Switch>
+      <Routes>
+        <Route path="/cartpage" element={<CartPage />} />
+        <Route exact path="/" element={<Homepage />} />
+      </Routes>
     </div>
   );
 }
