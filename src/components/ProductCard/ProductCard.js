@@ -1,8 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart, removeProductFromCart } from "../store/cart/actions";
-import { cartSelector } from "../store/cart/selectors";
-import { count } from "../_config";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "../../store/cart/actions";
+import { cartSelector } from "../../store/cart/selectors";
+import { count } from "../../_config";
 
 const compare_price = (product_a, product_b) => {
   return product_a.price - product_b.price;

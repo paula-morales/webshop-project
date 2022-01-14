@@ -1,0 +1,15 @@
+.Filters {
+  margin-top: 20px;
+
+  .Filters__sort-by {
+    gap: 10px;
+
+    .form-control {
+      width: 75% !important;
+    }
+  }
+
+  .Tags-container {
+    gap: 20px;
+  }
+}

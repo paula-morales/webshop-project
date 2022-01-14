@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "../components/ProductCard";
-import { selectTags } from "../store/products/selectors";
 import { useDispatch, useSelector } from "react-redux";
+
+import { selectTags } from "../store/products/selectors";
 import { selectProducts } from "../store/products/selectors";
 import { fetchProducts } from "../store/products/actions";
+import Filters from "../components/Filters/Filters";
+import ProductCard from "../components/ProductCard/ProductCard";
 
 export default function Homepage() {
   const [sortBy, setSortBy] = useState("price");
@@ -16,10 +18,17 @@ export default function Homepage() {
     dispatch(fetchProducts);
   }, [dispatch]);
 
-  function handleClick(e) {
-    const tagChosen = e.target.value;
+  function handleClick(tag) {
+    console.log("on click ", tag);
+
+    const tagChosen = tag;
     const newFilters = { ...filters, [tagChosen]: !filters[tagChosen] };
     setFilters(newFilters);
+  }
+
+  function handleOnChange(newSortBy) {
+    setSortBy(newSortBy);
+    console.log("on change ", newSortBy);
   }
 
   let productsWithFilter;
@@ -34,38 +43,12 @@ export default function Homepage() {
   }
 
   return (
-    <div>
-      <div className="wrap-filters">
-        <div>
-          filter by tag:
-          {tags.map((tag, i) => {
-            return (
-              <span key={i}>
-                <label className="Tag">{tag}</label>
-                <input
-                  type="checkbox"
-                  value={tag}
-                  name={tag}
-                  onClick={handleClick}
-                />{" "}
-              </span>
-            );
-          })}
-        </div>
-        <div>
-          sort by:
-          <select
-            onChange={(e) => {
-              setSortBy(e.target.value);
-            }}
-          >
-            <option default value="price">
-              Price
-            </option>
-            <option value="popularity">Popularity</option>
-          </select>
-        </div>
-      </div>
+    <div className="homepage">
+      <Filters
+        tags={tags}
+        onClick={handleClick}
+        handleOnChange={handleOnChange}
+      />
       <ProductCard sortBy={sortBy} products={productsWithFilter} />
     </div>
   );

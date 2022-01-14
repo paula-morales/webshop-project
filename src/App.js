@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import { Routes, Route, NavLink } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import CartPage from "./pages/CartPage";
