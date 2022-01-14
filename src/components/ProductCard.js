@@ -41,50 +41,55 @@ export default function ProductCard(props) {
 
   return (
     <div className="flex-container">
-      {products.map((product) => {
-        return (
-          <div key={product.id} className="flex-item">
-            <img
-              src={product.img}
-              alt={product.name}
-              style={{ width: "200px", height: "200px" }}
-            />
-            <p>
-              <strong>{product.name}</strong>€{product.price}
-            </p>
-            <p>
-              {product.tags.map((tag) => {
-                return (
-                  <label className="Tag" key={tag}>
-                    {tag}
-                  </label>
-                );
-              })}
-            </p>
-            <p>
-              add to Cart:
-              {cart.includes(product.id.toString()) ? (
+      {products.length > 0
+        ? products.map((product) => {
+            return (
+              <div key={product.id} className="flex-item">
+                <img
+                  src={product.picture_url}
+                  alt={product.name}
+                  style={{ width: "200px", height: "200px" }}
+                />
                 <p>
-                  <button
-                    value={product.id}
-                    onClick={handlerClickRemoveProduct}
-                  >
-                    -
-                  </button>{" "}
-                  {findQuantity(product.id)} in cart
-                  <button value={product.id} onClick={handlerClickAddProduct}>
-                    +{" "}
-                  </button>
+                  <strong>{product.name}</strong>€{product.price}
                 </p>
-              ) : (
-                <button value={product.id} onClick={handlerClickAddProduct}>
-                  +{" "}
-                </button>
-              )}
-            </p>
-          </div>
-        );
-      })}
+                <p>
+                  {product.tags.map((tag) => {
+                    return (
+                      <label className="Tag" key={tag}>
+                        {tag}
+                      </label>
+                    );
+                  })}
+                </p>
+                <p>
+                  add to Cart:
+                  {cart.includes(product.id.toString()) ? (
+                    <p>
+                      <button
+                        value={product.id}
+                        onClick={handlerClickRemoveProduct}
+                      >
+                        -
+                      </button>{" "}
+                      {findQuantity(product.id)} in cart
+                      <button
+                        value={product.id}
+                        onClick={handlerClickAddProduct}
+                      >
+                        +{" "}
+                      </button>
+                    </p>
+                  ) : (
+                    <button value={product.id} onClick={handlerClickAddProduct}>
+                      +{" "}
+                    </button>
+                  )}
+                </p>
+              </div>
+            );
+          })
+        : ""}
     </div>
   );
 }

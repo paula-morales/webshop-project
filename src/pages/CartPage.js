@@ -4,6 +4,7 @@ import { cartSelector, totalSelector } from "../store/cart/selectors";
 import { selectProducts } from "../store/products/selectors";
 import { addProductToCart, removeProductFromCart } from "../store/cart/actions";
 import { count } from "../_config";
+import { EMPTY_CART } from "../store/types";
 
 export default function CartPage() {
   const cart = useSelector(cartSelector);
@@ -27,7 +28,7 @@ export default function CartPage() {
   }
   function handlerClickEmptyCart() {
     dispatch({
-      type: "EMPTY_CART",
+      type: EMPTY_CART,
     });
   }
 
