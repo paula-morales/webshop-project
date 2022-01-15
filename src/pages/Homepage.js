@@ -16,8 +16,8 @@ export default function Homepage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts);
-  }, [dispatch]);
+    if (products.length === 0) dispatch(fetchProducts);
+  }, [dispatch, products.length]);
 
   function handleClick(tag) {
     const chosenTag = tag;

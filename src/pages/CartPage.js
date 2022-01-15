@@ -12,12 +12,12 @@ export default function CartPage() {
   const dispatch = useDispatch();
   const cartQuantity = count(cart);
   const total = useSelector(totalSelector);
+
   const productsInCart = products.filter((product) => {
     return cart.find((id) => {
       return parseInt(id) === product.id;
     });
   });
-  console.log("cart", cart);
 
   function findQuantity(productid) {
     for (const key in cartQuantity) {

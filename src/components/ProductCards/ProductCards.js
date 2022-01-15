@@ -26,7 +26,7 @@ export default function ProductCards(props) {
   }
 
   function handlerClick(productId) {
-    if (cart.includes(productId.toString())) {
+    if (cart.includes(productId)) {
       dispatch(removeProductFromCart(productId));
     } else {
       dispatch(addProductToCart(productId));
@@ -46,9 +46,7 @@ export default function ProductCards(props) {
           >
             <i
               className={
-                cart.includes(product.id.toString())
-                  ? "bi bi-dash"
-                  : "bi bi-plus"
+                cart.includes(product.id) ? "bi bi-dash" : "bi bi-plus"
               }
             ></i>
           </button>
