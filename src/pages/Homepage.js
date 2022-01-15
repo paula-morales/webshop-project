@@ -5,7 +5,8 @@ import { selectTags } from "../store/products/selectors";
 import { selectProducts } from "../store/products/selectors";
 import { fetchProducts } from "../store/products/actions";
 import Filters from "../components/Filters/Filters";
-import ProductCard from "../components/ProductCard/ProductCard";
+import ProductCards from "../components/ProductCards/ProductCards";
+import Loading from "../components/Loading/Loading";
 
 export default function Homepage() {
   const [sortBy, setSortBy] = useState("price");
@@ -19,20 +20,17 @@ export default function Homepage() {
   }, [dispatch]);
 
   function handleClick(tag) {
-    console.log("on click ", tag);
-
-    const tagChosen = tag;
-    const newFilters = { ...filters, [tagChosen]: !filters[tagChosen] };
+    const chosenTag = tag;
+    const newFilters = { ...filters, [chosenTag]: !filters[chosenTag] };
     setFilters(newFilters);
   }
 
   function handleOnChange(newSortBy) {
     setSortBy(newSortBy);
-    console.log("on change ", newSortBy);
   }
 
   let productsWithFilter;
-  const filterKeys = Object.keys(filters); //all the keys of the object filters
+  const filterKeys = Object.keys(filters);
   const filterTags = filterKeys.filter((tag) => filters[tag]); //only returns keys with true value
   if (!filterTags.length) {
     productsWithFilter = products;
@@ -43,13 +41,20 @@ export default function Homepage() {
   }
 
   return (
-    <div className="homepage">
-      <Filters
-        tags={tags}
-        onClick={handleClick}
-        handleOnChange={handleOnChange}
-      />
-      <ProductCard sortBy={sortBy} products={productsWithFilter} />
+    <div className="Homepage">
+      {!products ? (
+        <>
+          {" "}
+          <Filters
+            tags={tags}
+            onClick={handleClick}
+            handleOnChange={handleOnChange}
+          />
+          <ProductCards sortBy={sortBy} products={productsWithFilter} />
+        </>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }

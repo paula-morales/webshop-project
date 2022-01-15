@@ -1,0 +1,169 @@
+.ProductCard {
+  .ProductCard__image {
+    background-color: gray;
+    overflow: hidden;
+    position: relative;
+    height: 500px;
+
+    > img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    img {
+      transition: transform 0.5s ease;
+      transform: translateX(5px);
+    }
+  }
+
+  .ProductCard__wrapper {
+    &:hover {
+      img {
+        transform: translateX(10px);
+      }
+
+      .ProductCard__title {
+        animation-name: bounce;
+        animation-duration: 2.5s;
+        animation-fill-mode: both;
+        animation-iteration-count: 1;
+      }
+
+      .ButtonAdd {
+        animation-name: beep;
+        animation-duration: 2.5s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+
+  .ProductCard__add {
+    z-index: 1;
+    background-color: white;
+    right: 15px;
+    top: 10px;
+    border-radius: 5px;
+    transition: transform 0.5s ease;
+  }
+
+  .Tag {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    padding: 0 10px 0 12px;
+    background: #3243a5;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 12px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+
+    &:not(:last-child) {
+      margin: 0 25px 0 0;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -12px;
+      width: 0;
+      height: 0;
+      border-color: transparent #3243a5 transparent transparent;
+      border-style: solid;
+      border-width: 12px 12px 12px 0;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 1px;
+      float: left;
+      width: 5px;
+      height: 5px;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      background: #fff;
+      -webkit-box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.4);
+      box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .ProductCard__title {
+    font-size: 120%;
+  }
+
+  .ButtonAdd {
+    font-size: 2rem;
+    transition: font-size 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+      font-size: 2.6rem;
+      animation-name: unset;
+    }
+  }
+
+  .ProductCard__price {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+  }
+
+  .ProductCard__price,
+  .ButtonAdd {
+    border-radius: 0 10px 0 10px;
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes beep {
+    0% {
+      transform: scale(0.9);
+    }
+    20% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(0.9);
+    }
+    60% {
+      transform: scale(1);
+    }
+    80% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(0.9);
+    }
+  }
+}

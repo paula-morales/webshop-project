@@ -5,7 +5,7 @@ import Homepage from "./pages/Homepage";
 import CartPage from "./pages/CartPage";
 import { useSelector } from "react-redux";
 import { cartSelector } from "./store/cart/selectors";
-
+import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
   const cart = useSelector(cartSelector);
 

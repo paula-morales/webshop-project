@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
 * {
   font-family: "Roboto", sans-serif;
 }
@@ -21,37 +22,4 @@
 }
 html {
   color: black;
-}
-
-.flex-container {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-}
-
-.flex-item {
-  -webkit-flex: 1 auto;
-  flex: 1 auto;
-  width: 20%;
-  height: 500px;
-}
-
-.wrap-filters {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
-  align-content: stretch;
-  height: 200px;
-}
-
-.Tag {
-  border-radius: 5px;
-  padding: 1px 3px;
-  margin-right: 0.1rem;
-  color: white;
-  font-size: 0.85em;
-  background: #555;
 }
