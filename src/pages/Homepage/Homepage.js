@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectTags } from "../../store/products/selectors";
 import { selectProducts } from "../../store/products/selectors";
 import { fetchProducts } from "../../store/products/actions";
 import Filters from "../../components/Filters/Filters";
@@ -22,16 +21,19 @@ const compare_popularity = (product_a, product_b) => {
 
 export default function Homepage() {
   const [sortBy, setSortBy] = useState("price");
+  const [tags, setTags] = useState([]);
   const [filters, setFilters] = useState({});
 
-  const tags = useSelector(selectTags);
   const products = useSelector(selectProducts);
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
 
   useEffect(() => {
     if (products.length === 0) dispatch(fetchProducts);
-  }, [dispatch, products.length]);
+
+    const allTags = products.map((product) => product.tags);
+    setTags([...new Set(allTags.flat(1))]);
+  }, [dispatch, products.length, products]);
 
   function handleClick(tag) {
     const chosenTag = tag;
