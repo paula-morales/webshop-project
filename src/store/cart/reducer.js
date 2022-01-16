@@ -11,8 +11,8 @@ export const cartReducer = (state = initialState, { type, payload }) => {
       return [];
     }
     case REMOVE_PRODUCT: {
-      const newState = [...state];
-      newState.splice(newState.indexOf(payload), 1);
+      let newState = [...state];
+      newState = newState.filter((productId) => productId !== payload);
       return newState;
     }
     default: {

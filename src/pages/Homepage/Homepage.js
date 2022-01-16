@@ -59,8 +59,8 @@ export default function Homepage() {
   } else {
     products.sort(compare_popularity);
   }
+
   function onClickProduct(productId) {
-    console.log(productId);
     if (cart.includes(productId)) {
       dispatch(removeProductFromCart(productId));
     } else {
@@ -70,7 +70,7 @@ export default function Homepage() {
 
   return (
     <div className="Homepage">
-      {products ? (
+      {products.length > 0 ? (
         <>
           {" "}
           <Filters
@@ -79,7 +79,7 @@ export default function Homepage() {
             handleOnChange={handleOnChange}
           />
           <div className="ProductCards d-flex flex-wrap py-5">
-            {products.map((product) => (
+            {productsWithFilter.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}

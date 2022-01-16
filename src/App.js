@@ -2,7 +2,7 @@ import React from "react";
 import "./App.scss";
 import { Routes, Route, NavLink } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage";
-import CartPage from "./pages/CartPage";
+import CartPage from "./pages/CartPage/CartPage";
 import { useSelector } from "react-redux";
 import { selectCart } from "./store/cart/selectors";
 import "bootstrap-icons/font/bootstrap-icons.css";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./ProductCard.scss";
 
-export default function ProductCards(props) {
+export default function ProductCard(props) {
   const { product, productInCart } = props;
   const [anim, setAnim] = useState(false);
 
@@ -30,11 +30,15 @@ export default function ProductCards(props) {
           onClick={() => handlerClick(product.id)}
           disabled={anim}
         >
-          <i className={productInCart ? "bi bi-dash" : "bi bi-plus"}></i>
+          <i
+            className={
+              productInCart ? "bi bi-cart-dash-fill" : "bi bi-cart-plus"
+            }
+          ></i>
         </button>
       </div>
       <div className="ProductCard__image">
-        <img src={product.picture_url} alt={product.title} />
+        <img src={product.picture_url} alt={product.title} loading="lazy" />
         <p className="ProductCard__price bg-white  px-3 py-2">
           €{product.price}
         </p>

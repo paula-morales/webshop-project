@@ -33,13 +33,17 @@ export default function Filters(props) {
   return (
     <div className="Filters d-flex justify-content-between flex-wrap mx-md-5 mx-3 my-2 my-md-4">
       <div className="Filters__tags col-12 col-md-9 d-flex align-items-center">
-        <p className="col-2 mb-0">Filter by tag</p>
-        <div className="d-flex flex-wrap Tags-container">
-          {tags.map((tag, i) => getTags(tag, i))}
-        </div>
+        {tags.length > 0 && (
+          <>
+            <p className="col-4 col-sm-2 mb-0">Filter by tag</p>
+            <div className="d-flex flex-wrap Tags-container">
+              {tags.map((tag, i) => getTags(tag, i))}
+            </div>
+          </>
+        )}
       </div>
-      <div className="Filters__sort-by col-12 col-md-3 d-flex align-items-center">
-        <p className="col-4 mb-0 text-end">Sort by</p>
+      <div className="Filters__sort-by col-6 col-md-3 d-flex align-items-center my-3 my-md-0">
+        <p className="col-4 mb-0 text-md-end">Sort by</p>
         <select onChange={handleOnChange} className="form-control">
           <option default value="price">
             Price
