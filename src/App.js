@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.scss";
 import { Routes, Route, NavLink } from "react-router-dom";
-import Homepage from "./pages/Homepage";
+import Homepage from "./pages/Homepage/Homepage";
 import CartPage from "./pages/CartPage";
 import { useSelector } from "react-redux";
-import { cartSelector } from "./store/cart/selectors";
+import { selectCart } from "./store/cart/selectors";
 import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
-  const cart = useSelector(cartSelector);
+  const cart = useSelector(selectCart);
 
   return (
     <div className="App">

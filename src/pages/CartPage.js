@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { cartSelector, totalSelector } from "../store/cart/selectors";
+import { selectCart, totalSelector } from "../store/cart/selectors";
 import { selectProducts } from "../store/products/selectors";
 import { addProductToCart, removeProductFromCart } from "../store/cart/actions";
 import { count } from "../_config";
 import { EMPTY_CART } from "../store/types";
 
 export default function CartPage() {
-  const cart = useSelector(cartSelector);
+  const cart = useSelector(selectCart);
   const products = useSelector(selectProducts);
   const dispatch = useDispatch();
   const cartQuantity = count(cart);

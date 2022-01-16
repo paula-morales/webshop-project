@@ -1,4 +1,19 @@
 .ProductCard {
+  &:hover {
+    .ProductCard__image {
+      img {
+        transform: translateX(10px);
+      }
+    }
+
+    .ButtonAdd {
+      animation-name: beep;
+      animation-duration: 2.5s;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+    }
+  }
+
   .ProductCard__image {
     background-color: gray;
     overflow: hidden;
@@ -20,28 +35,6 @@
     img {
       transition: transform 0.5s ease;
       transform: translateX(5px);
-    }
-  }
-
-  .ProductCard__wrapper {
-    &:hover {
-      img {
-        transform: translateX(10px);
-      }
-
-      .ProductCard__title {
-        animation-name: bounce;
-        animation-duration: 2.5s;
-        animation-fill-mode: both;
-        animation-iteration-count: 1;
-      }
-
-      .ButtonAdd {
-        animation-name: beep;
-        animation-duration: 2.5s;
-        animation-fill-mode: both;
-        animation-iteration-count: infinite;
-      }
     }
   }
 
@@ -107,6 +100,13 @@
 
   .ProductCard__title {
     font-size: 120%;
+
+    &.bounce {
+      animation-name: bounce;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
+    }
   }
 
   .ButtonAdd {
@@ -126,8 +126,28 @@
   }
 
   .ProductCard__price,
-  .ButtonAdd {
+  .ButtonAdd,
+  .ProductCard__badge {
     border-radius: 0 10px 0 10px;
+  }
+
+  .ProductCard__badge {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    z-index: 1;
+    padding: 15px 20px;
+    font-size: 120%;
+    background-color: #3243a5;
+    letter-spacing: 2px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.2s ease;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes bounce {

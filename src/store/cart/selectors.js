@@ -1,4 +1,4 @@
-export const cartSelector = (state) => {
+export const selectCart = (state) => {
   return state.cart;
 };
 
