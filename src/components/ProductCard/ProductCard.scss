@@ -5,13 +5,6 @@
         transform: translateX(10px);
       }
     }
-
-    .ButtonAdd {
-      animation-name: beep;
-      animation-duration: 2.5s;
-      animation-fill-mode: both;
-      animation-iteration-count: infinite;
-    }
   }
 
   .ProductCard__image {
@@ -100,13 +93,6 @@
 
   .ProductCard__title {
     font-size: 120%;
-
-    &.bounce {
-      animation-name: bounce;
-      animation-duration: 1s;
-      animation-fill-mode: both;
-      animation-iteration-count: 1;
-    }
   }
 
   .ButtonAdd {
@@ -147,43 +133,6 @@
     &.visible {
       opacity: 1;
       transform: translateY(0);
-    }
-  }
-
-  @keyframes bounce {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-10px);
-    }
-    60% {
-      transform: translateY(-5px);
-    }
-  }
-
-  @keyframes beep {
-    0% {
-      transform: scale(0.9);
-    }
-    20% {
-      transform: scale(1);
-    }
-    40% {
-      transform: scale(0.9);
-    }
-    60% {
-      transform: scale(1);
-    }
-    80% {
-      transform: scale(0.9);
-    }
-    100% {
-      transform: scale(0.9);
     }
   }
 }

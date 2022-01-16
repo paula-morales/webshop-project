@@ -40,11 +40,7 @@ export default function ProductCards(props) {
         </p>
       </div>
       <div className="d-flex align-items-center m-3 justify-content-between ">
-        <p
-          className={`ProductCard__title fw-bold text-uppercase mb-0 ${
-            anim ? "bounce" : ""
-          }`}
-        >
+        <p className="ProductCard__title fw-bold text-uppercase mb-0">
           {product.title}
         </p>
         <div className="Tags__wrapper ms-3">
