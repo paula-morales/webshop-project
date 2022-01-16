@@ -1,6 +1,6 @@
 # Webshop
 
-[https://project-66-8ff4b.web.app/]Deployed version here
+Deployed version [here](https://project-66-8ff4b.web.app/)
 
 ## Project built with React v 17.0.2
 
